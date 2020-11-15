@@ -1,0 +1,17 @@
+{
+  "name": "buy-and-sell",
+  "version": "1.0.0",
+  "description": "Куплю. Продам",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "eslint --ext .js src/",
+    "start": "node ./src/service/service.js"
+  },
+  "author": "Александр Демченко",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "7.13.0",
+    "eslint-config-htmlacademy": "0.6.0"
+  }
+}
