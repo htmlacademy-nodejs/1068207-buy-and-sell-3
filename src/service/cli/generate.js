@@ -74,11 +74,11 @@ module.exports = {
 
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
-        return console.error(`Can't write data to file...`);
+        console.error(`Can't write data to file...`);
+        return process.exit(ExitCode.error);
       }
 
-      console.info(`Operation success. File created.`);
-      return process.exit(ExitCode.error);
+      return console.info(`Operation success. File created.`);
     });
   }
 };
