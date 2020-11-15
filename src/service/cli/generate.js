@@ -2,6 +2,7 @@
 
 const fs = require(`fs`);
 const {shuffle, getRandomInt} = require(`../utils/_utils`);
+const {ExitCode} = require(`../utils/_constants`);
 
 const DEFAULT_COUNT = 1;
 const FILE_NAME = `mocks.json`;
@@ -41,7 +42,6 @@ const OfferType = {
   SALE: `sale`,
 };
 
-
 const SumRestrict = {
   MIN: 1000,
   MAX: 100000,
@@ -77,7 +77,8 @@ module.exports = {
         return console.error(`Can't write data to file...`);
       }
 
-      return console.info(`Operation success. File created.`);
+      console.info(`Operation success. File created.`);
+      return process.exit(ExitCode.error);
     });
   }
 };
