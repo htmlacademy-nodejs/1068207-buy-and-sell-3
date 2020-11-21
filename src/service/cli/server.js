@@ -17,7 +17,6 @@ const sendResponse = (res, statusCode, message) => {
       <body>${message}</body>
     </html>`.trim();
 
-  res.statusCode = statusCode;
   res.writeHead(statusCode, {
     'Content-Type': `text/html; charset=UTF-8`,
   });
@@ -26,11 +25,6 @@ const sendResponse = (res, statusCode, message) => {
 };
 
 const handleClientConnect = async (req, res) => {
-  let plainHtml;
-
-  res.writeHead(HttpCode.OK, {
-    'Content-Type': `text/html; charset=UTF-8`,
-  });
 
   switch (req.url) {
     case `/`:
@@ -48,7 +42,7 @@ const handleClientConnect = async (req, res) => {
         return sendResponse(res, HttpCode.NOT_FOUND, `Not Found`);
       }
 
-    default: return res.end(`Упс, такой страницы нет, 404`);
+    default: return sendResponse(res, HttpCode.NOT_FOUND, `Упс, такой страницы нет, 404`);
   }
 
 };
