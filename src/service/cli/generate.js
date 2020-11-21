@@ -2,7 +2,7 @@
 
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
-const {shuffle, getRandomInt} = require(`../utils/_utils`);
+const {shuffle, getRandomInt, readContent} = require(`../utils/_utils`);
 const {ExitCode} = require(`../utils/_constants`);
 
 const DEFAULT_COUNT = 1;
@@ -28,16 +28,6 @@ const PictureRestrict = {
 
 const getPictureFileName = (number) => `item${number.toString().padStart(2, 0)}.jpg`;
 
-const readContent = async (filePath) => {
-  try {
-    const content = await fs.readFile(filePath, `utf8`);
-    return content.split(`\n`);
-  } catch (err) {
-    console.error(chalk.red(err));
-    return [];
-  }
-};
-
 const generateOffers = (count, categories, titles, sentences) => (
   Array(count).fill({}).map(() => ({
     category: [categories[getRandomInt(0, categories.length - 1)]],
@@ -60,7 +50,6 @@ module.exports = {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generateOffers(countOffer, categories, titles, sentences));
-
 
     try {
       await fs.writeFile(FILE_NAME, content);
