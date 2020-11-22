@@ -9,7 +9,7 @@ myRouter.get(`/`, (req, res) => {
 });
 
 myRouter.get(`/comments`, (req, res) => {
-  return res.send(`Current route is /my/comments`);
+  return res.render(`comments`);
 });
 
 module.exports = myRouter;
