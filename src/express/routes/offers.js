@@ -5,19 +5,19 @@ const {Router} = require(`express`);
 const offersRouter = new Router();
 
 offersRouter.get(`/category/:id`, (req, res) => {
-  return res.send(`Current route is /offers/category/${req.params.id}`);
+  return res.render(`category`);
 });
 
 offersRouter.get(`/add`, (req, res) => {
-  return res.send(`Current route is /offers/add`);
+  return res.render(`new-ticket`);
 });
 
 offersRouter.get(`/:id`, (req, res) => {
-  return res.send(`Current route is /offers/${req.params.id}`);
+  return res.render(`ticket`);
 });
 
 offersRouter.get(`/edit/:id`, (req, res) => {
-  return res.send(`Current route is /offers/edit/${req.params.id}`);
+  return res.render(`ticket-edit`);
 });
 
 module.exports = offersRouter;
