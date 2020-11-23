@@ -23,7 +23,7 @@ app.set(`views`, path.join(__dirname, `templates`));
 app.set(`view engine`, `pug`);
 
 app.get(`/`, (req, res) => {
-  return res.render(`index`);
+  return res.render(`main`);
 });
 
 app.listen(DEFAULT_PORT, () => console.log(`Server has been started at ${DEFAULT_PORT}`));

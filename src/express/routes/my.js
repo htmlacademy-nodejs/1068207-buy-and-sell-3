@@ -5,7 +5,7 @@ const {Router} = require(`express`);
 const myRouter = new Router();
 
 myRouter.get(`/`, (req, res) => {
-  return res.send(`Current route is /my`);
+  return res.render(`my-tickets`);
 });
 
 myRouter.get(`/comments`, (req, res) => {
