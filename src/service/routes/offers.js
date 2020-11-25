@@ -13,7 +13,7 @@ offersRouter.get(`/`, async (req, res) => {
     const result = await fs.readFile(MOCK_FILE);
     return res.json(JSON.parse(result));
   } catch (error) {
-    return res.status(HttpCode.INTERNAL_SERVER_ERROR).send(error);
+    return res.status(HttpCode.INTERNAL_SERVER_ERROR).send(`[]`);
   }
 });
 
