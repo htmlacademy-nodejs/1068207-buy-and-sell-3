@@ -2,6 +2,8 @@
 
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
+const {nanoid} = require(`nanoid`);
+const {OfferType, SumRestrict, PictureRestrict} = require(`./_constants`);
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -28,8 +30,30 @@ const readContent = async (filePath) => {
   }
 };
 
+const getPictureFileName = (number) => `item${number.toString().padStart(2, 0)}.jpg`;
+
+const generateComment = (commentsList) => {
+  return shuffle(commentsList)
+    .slice(0, getRandomInt(1, commentsList.length - 1))
+    .map((text) => ({id: nanoid(), text}));
+};
+
+const generateOffer = (titles, categories, sentences, comments) => {
+  return {
+    id: nanoid(),
+    category: [categories[getRandomInt(0, categories.length - 1)]],
+    comments: generateComment(comments),
+    description: shuffle(sentences).slice(1, 5).join(` `),
+    picture: getPictureFileName(getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
+    title: titles[getRandomInt(0, titles.length - 1)],
+    type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
+    sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
+  };
+};
+
 module.exports = {
   shuffle,
   getRandomInt,
-  readContent
+  readContent,
+  generateOffer
 };

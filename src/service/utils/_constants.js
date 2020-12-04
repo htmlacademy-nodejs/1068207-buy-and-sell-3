@@ -27,3 +27,25 @@ module.exports.Env = {
   DEVELOPMENT: `development`,
   PRODUCTION: `production`
 };
+
+module.exports.OfferType = {
+  OFFER: `offer`,
+  SALE: `sale`,
+};
+
+module.exports.SumRestrict = {
+  MIN: 1000,
+  MAX: 100000,
+};
+
+module.exports.PictureRestrict = {
+  MIN: 1,
+  MAX: 16
+};
+
+module.exports.MockFilenames = {
+  FILE_SENTENCES_PATH: `./data/sentences.txt`,
+  FILE_TITLES_PATH: `./data/titles.txt`,
+  FILE_CATEGORIES_PATH: `./data/categories.txt`,
+  FILE_COMMENTS_PATH: `./data/comments.txt`,
+};
